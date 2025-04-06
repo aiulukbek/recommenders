@@ -1,3 +1,4 @@
+# config file for train test split 
 from ml_collections import config_dict 
 
 

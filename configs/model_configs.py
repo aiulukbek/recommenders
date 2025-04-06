@@ -1,3 +1,4 @@
+# Config file for model parameters 
 from ml_collections import config_dict 
 
 

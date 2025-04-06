@@ -1,6 +1,10 @@
+# conversion rate calculator 
 from typing import List 
 
 class VisitorCR: 
+    """
+        The class is responsible for Conversion rate calculation 
+    """
     def __init__(self, visitors : List[int], addtocart : List[int], purchase : List[int]): 
         self.visitors = visitors 
         self.addtocart = addtocart 
