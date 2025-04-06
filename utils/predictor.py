@@ -1,7 +1,7 @@
 import os 
 from gensim.models import Word2Vec
-from pathlib import Path 
 from typing import List 
+from pathlib import Path 
 class Predictor: 
     def __init__(self, path : Path):
         self.model_path = str(path) 
@@ -32,6 +32,9 @@ class Predictor:
         self._check_key(itemid) 
         embedding = self.embeddings[itemid]
         return embedding
+    
+    def get_vocabulary(self)-> List: 
+        return self.vocabulary
     
 
     def _check_model(self): 

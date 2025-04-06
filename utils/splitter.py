@@ -16,5 +16,5 @@ def get_sequences(events: pd.DataFrame) -> List[List]:
     conf_split = get_split_configs() 
     group_keys = conf_split['group_keys']
     sequence_key = conf_split['sequence_key']
-    return events.groupby(group_keys)[sequence_key].apply(list).reset_index()[sequence_key].tolist() 
+    return events.groupby(group_keys)[sequence_key].apply(set).reset_index()[sequence_key].tolist() 
 

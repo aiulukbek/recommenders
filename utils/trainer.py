@@ -1,5 +1,6 @@
 from typing import Dict
 from gensim.models import Word2Vec
+from pathlib import Path
 class Trainer: 
     def __init__(self, training_set, params : Dict): 
         self.training_set = training_set 
