@@ -1,4 +1,4 @@
-# recommenders
+# RecSys
 This repo for recommendation system using Embeddings  
 
 Main goal is to recommend the most similar products depending on the sequences; 
