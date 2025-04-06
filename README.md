@@ -17,3 +17,10 @@ Metrics :
 
 The definition of the metrics can be found in any literature related to recommendation systems, 
 since they are standard metrics in any recommendation systems. 
+
+Dataset: 
+
+- retail dataset is used ;
+- only behavior data is considered;
+
+- link to the data : https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset/data 
