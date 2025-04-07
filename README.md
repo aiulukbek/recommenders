@@ -24,3 +24,13 @@ Dataset:
 - only behavior data is considered;
 
 - link to the data : https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset/data 
+
+
+Run: 
+- is_training  = True to train the model , default = False 
+- itemid unique identifier of product to generate recommendations, default = "" 
+
+
+Example: 
+  python run_recommender.py --is_training True -> to train a model 
+  python run_recommender.py --is_training False --itemid {unique identifier}  -> to generate recommendations 

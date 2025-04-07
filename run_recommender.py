@@ -8,6 +8,7 @@ from utils.converters import format_date
 from utils.splitter import train_test_split
 from utils.splitter import get_sequences
 from configs.split_configs import get_split_configs
+from configs.artifact_configs import get_artifact_configs
 from configs.model_configs import get_model_params
 from utils.trainer import Trainer
 from utils.predictor import Predictor
@@ -18,8 +19,9 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level = logging.INFO)
 
 def format_dataset(): 
-    dirname = Path("data") 
-    filename = Path("events.csv") 
+    configs = get_artifact_configs()
+    dirname = Path(configs['data_folder']) 
+    filename = Path(configs['dataset']) 
     file_path = dirname / filename 
     logging.info(f"Path to events : {file_path}")
     events = CSVReader.read(str(file_path))
@@ -39,12 +41,14 @@ def get_train_test_sets(events):
     return train_sequences, test_sequences
 
 def save(trainer): 
-    path_to_save = Path("model") 
-    filename = path_to_save / Path("embedding_model.model")
+    configs = get_artifact_configs() 
+    path_to_save = Path(configs['model_folder']) 
+    filename = path_to_save / Path(configs['model_name'])
     trainer.save(str(filename))
 
 def calculate_metrics(test_sequences_filtered):
-    model_path = Path("model/embedding_model.model")
+    configs = get_artifact_configs()
+    model_path = Path(f"{configs['model_folder']}/{configs['model_name']}")
     predictor = Predictor(model_path)
     metric = Metric(predictor=predictor)
     # let us take sample of test datasets 
@@ -67,7 +71,8 @@ def model_training():
     logging.info(f"precision: {precision_10} recall: {recall_10} hirtate: {hitrate_10}")
     
 def make_recommendations(itemid): 
-    model_path = Path("model/embedding_model.model")
+    configs = get_artifact_configs() 
+    model_path = Path(f"{configs['model_folder']}/{configs['model_name']}")
     predictor = Predictor(model_path)
     recos = predictor.get_recommendations(itemid)
     return recos 
