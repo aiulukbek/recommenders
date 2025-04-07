@@ -46,8 +46,12 @@ class Predictor:
                 - recommendations for the given item 
         """
         self._check_key(itemid) 
-        recos = self.model.wv.most_similar(itemid) 
-        recos = [reco[0] for reco in recos]
+        if itemid in self.model.wv.key_to_index:
+            recos = self.model.wv.most_similar(itemid) 
+            recos = [reco[0] for reco in recos]
+        else: 
+            print(f"Item {itemid} is not in the vocabulary.")
+            recos = []
         return recos
     
     def get_embedding(self, itemid: str): 
