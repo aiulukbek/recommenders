@@ -33,4 +33,5 @@ Run:
 
 Example: 
   python run_recommender.py --is_training True -> to train a model 
+  
   python run_recommender.py --is_training False --itemid {unique identifier}  -> to generate recommendations 
